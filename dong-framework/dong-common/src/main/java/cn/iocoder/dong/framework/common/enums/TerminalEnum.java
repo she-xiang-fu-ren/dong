@@ -1,5 +1,6 @@
 package cn.iocoder.dong.framework.common.enums;
 
+import cn.iocoder.dong.framework.common.core.IntArrayValuable;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
