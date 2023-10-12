@@ -1,10 +1,10 @@
 package cn.iocoder.dong.framework.xss.config;
 
-import cn.iocoder.yudao.framework.common.enums.WebFilterOrderEnum;
-import cn.iocoder.yudao.framework.xss.core.clean.JsoupXssCleaner;
-import cn.iocoder.yudao.framework.xss.core.clean.XssCleaner;
-import cn.iocoder.yudao.framework.xss.core.filter.XssFilter;
-import cn.iocoder.yudao.framework.xss.core.json.XssStringJsonDeserializer;
+import cn.iocoder.dong.framework.common.enums.WebFilterOrderEnum;
+import cn.iocoder.dong.framework.xss.core.clean.JsoupXssCleaner;
+import cn.iocoder.dong.framework.xss.core.clean.XssCleaner;
+import cn.iocoder.dong.framework.xss.core.filter.XssFilter;
+import cn.iocoder.dong.framework.xss.core.json.XssStringJsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.util.PathMatcher;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import static cn.iocoder.yudao.framework.web.config.YudaoWebAutoConfiguration.createFilterBean;
+import static cn.iocoder.dong.framework.web.config.YudaoWebAutoConfiguration.createFilterBean;
 
 @AutoConfiguration
 @EnableConfigurationProperties(XssProperties.class)

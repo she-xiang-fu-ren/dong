@@ -1,7 +1,7 @@
 package cn.iocoder.dong.framework.common.validation;
 
 import cn.hutool.core.collection.CollUtil;
-import cn.iocoder.yudao.framework.common.core.IntArrayValuable;
+import cn.iocoder.dong.framework.common.core.IntArrayValuable;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

@@ -1,8 +1,8 @@
 package cn.iocoder.dong.framework.apilog.core.service;
 
 import cn.hutool.core.bean.BeanUtil;
-import cn.iocoder.yudao.module.infra.api.logger.ApiErrorLogApi;
-import cn.iocoder.yudao.module.infra.api.logger.dto.ApiErrorLogCreateReqDTO;
+//import cn.iocoder.dong.module.infra.api.logger.ApiErrorLogApi;
+//import cn.iocoder.dong.module.infra.api.logger.dto.ApiErrorLogCreateReqDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Async;
 
@@ -16,13 +16,13 @@ import org.springframework.scheduling.annotation.Async;
 @RequiredArgsConstructor
 public class ApiErrorLogFrameworkServiceImpl implements ApiErrorLogFrameworkService {
 
-    private final ApiErrorLogApi apiErrorLogApi;
+//    private final ApiErrorLogApi apiErrorLogApi;
 
     @Override
     @Async
     public void createApiErrorLog(ApiErrorLog apiErrorLog) {
-        ApiErrorLogCreateReqDTO reqDTO = BeanUtil.copyProperties(apiErrorLog, ApiErrorLogCreateReqDTO.class);
-        apiErrorLogApi.createApiErrorLog(reqDTO);
+//        ApiErrorLogCreateReqDTO reqDTO = BeanUtil.copyProperties(apiErrorLog, ApiErrorLogCreateReqDTO.class);
+//        apiErrorLogApi.createApiErrorLog(reqDTO);
     }
 
 }

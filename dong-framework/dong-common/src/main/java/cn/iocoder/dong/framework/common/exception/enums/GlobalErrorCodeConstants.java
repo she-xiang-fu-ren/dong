@@ -1,6 +1,6 @@
 package cn.iocoder.dong.framework.common.exception.enums;
 
-import cn.iocoder.yudao.framework.common.exception.ErrorCode;
+import cn.iocoder.dong.framework.common.exception.ErrorCode;
 
 /**
  * 全局错误码枚举

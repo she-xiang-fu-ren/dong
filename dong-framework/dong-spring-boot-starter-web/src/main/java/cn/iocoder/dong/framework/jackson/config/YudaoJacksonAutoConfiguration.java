@@ -1,10 +1,10 @@
 package cn.iocoder.dong.framework.jackson.config;
 
 import cn.hutool.core.collection.CollUtil;
-import cn.iocoder.yudao.framework.common.util.json.JsonUtils;
-import cn.iocoder.yudao.framework.jackson.core.databind.LocalDateTimeDeserializer;
-import cn.iocoder.yudao.framework.jackson.core.databind.LocalDateTimeSerializer;
-import cn.iocoder.yudao.framework.jackson.core.databind.NumberSerializer;
+import cn.iocoder.dong.framework.common.util.json.JsonUtils;
+import cn.iocoder.dong.framework.jackson.core.databind.LocalDateTimeDeserializer;
+import cn.iocoder.dong.framework.jackson.core.databind.LocalDateTimeSerializer;
+import cn.iocoder.dong.framework.jackson.core.databind.NumberSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import lombok.extern.slf4j.Slf4j;

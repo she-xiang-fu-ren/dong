@@ -1,6 +1,6 @@
 package cn.iocoder.dong.framework.xss.core.filter;
 
-import cn.iocoder.yudao.framework.xss.core.clean.XssCleaner;
+import cn.iocoder.dong.framework.xss.core.clean.XssCleaner;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;

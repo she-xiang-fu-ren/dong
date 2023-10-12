@@ -1,8 +1,8 @@
 package cn.iocoder.dong.framework.common.exception.util;
 
-import cn.iocoder.yudao.framework.common.exception.ErrorCode;
-import cn.iocoder.yudao.framework.common.exception.ServiceException;
-import cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants;
+import cn.iocoder.dong.framework.common.exception.ErrorCode;
+import cn.iocoder.dong.framework.common.exception.ServiceException;
+import cn.iocoder.dong.framework.common.exception.enums.GlobalErrorCodeConstants;
 import com.google.common.annotations.VisibleForTesting;
 import lombok.extern.slf4j.Slf4j;
 

@@ -1,6 +1,6 @@
 package cn.iocoder.dong.framework.xss.core.json;
 
-import cn.iocoder.yudao.framework.xss.core.clean.XssCleaner;
+import cn.iocoder.dong.framework.xss.core.clean.XssCleaner;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.DeserializationContext;

@@ -1,8 +1,8 @@
 package cn.iocoder.dong.framework.common.pojo;
 
-import cn.iocoder.yudao.framework.common.exception.ErrorCode;
-import cn.iocoder.yudao.framework.common.exception.ServiceException;
-import cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants;
+import cn.iocoder.dong.framework.common.exception.ErrorCode;
+import cn.iocoder.dong.framework.common.exception.ServiceException;
+import cn.iocoder.dong.framework.common.exception.enums.GlobalErrorCodeConstants;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.util.Assert;

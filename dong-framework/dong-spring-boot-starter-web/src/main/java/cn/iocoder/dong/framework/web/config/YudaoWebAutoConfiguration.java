@@ -1,12 +1,12 @@
 package cn.iocoder.dong.framework.web.config;
 
-import cn.iocoder.yudao.framework.apilog.core.service.ApiErrorLogFrameworkService;
-import cn.iocoder.yudao.framework.common.enums.WebFilterOrderEnum;
-import cn.iocoder.yudao.framework.web.core.filter.CacheRequestBodyFilter;
-import cn.iocoder.yudao.framework.web.core.filter.DemoFilter;
-import cn.iocoder.yudao.framework.web.core.handler.GlobalExceptionHandler;
-import cn.iocoder.yudao.framework.web.core.handler.GlobalResponseBodyHandler;
-import cn.iocoder.yudao.framework.web.core.util.WebFrameworkUtils;
+import cn.iocoder.dong.framework.apilog.core.service.ApiErrorLogFrameworkService;
+import cn.iocoder.dong.framework.common.enums.WebFilterOrderEnum;
+import cn.iocoder.dong.framework.web.core.filter.CacheRequestBodyFilter;
+import cn.iocoder.dong.framework.web.core.filter.DemoFilter;
+import cn.iocoder.dong.framework.web.core.handler.GlobalExceptionHandler;
+import cn.iocoder.dong.framework.web.core.handler.GlobalResponseBodyHandler;
+import cn.iocoder.dong.framework.web.core.util.WebFrameworkUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

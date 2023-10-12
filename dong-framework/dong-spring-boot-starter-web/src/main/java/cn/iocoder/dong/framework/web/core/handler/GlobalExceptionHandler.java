@@ -3,14 +3,14 @@ package cn.iocoder.dong.framework.web.core.handler;
 import cn.hutool.core.exceptions.ExceptionUtil;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.iocoder.yudao.framework.apilog.core.service.ApiErrorLog;
-import cn.iocoder.yudao.framework.apilog.core.service.ApiErrorLogFrameworkService;
-import cn.iocoder.yudao.framework.common.exception.ServiceException;
-import cn.iocoder.yudao.framework.common.pojo.CommonResult;
-import cn.iocoder.yudao.framework.common.util.json.JsonUtils;
-import cn.iocoder.yudao.framework.common.util.monitor.TracerUtils;
-import cn.iocoder.yudao.framework.common.util.servlet.ServletUtils;
-import cn.iocoder.yudao.framework.web.core.util.WebFrameworkUtils;
+import cn.iocoder.dong.framework.apilog.core.service.ApiErrorLog;
+import cn.iocoder.dong.framework.apilog.core.service.ApiErrorLogFrameworkService;
+import cn.iocoder.dong.framework.common.exception.ServiceException;
+import cn.iocoder.dong.framework.common.pojo.CommonResult;
+import cn.iocoder.dong.framework.common.util.json.JsonUtils;
+import cn.iocoder.dong.framework.common.util.monitor.TracerUtils;
+import cn.iocoder.dong.framework.common.util.servlet.ServletUtils;
+import cn.iocoder.dong.framework.web.core.util.WebFrameworkUtils;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.exception.ExceptionUtils;
@@ -34,7 +34,7 @@ import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Objects;
 
-import static cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants.*;
+import static cn.iocoder.dong.framework.common.exception.enums.GlobalErrorCodeConstants.*;
 
 /**
  * 全局异常处理器，将 Exception 翻译成 CommonResult + 对应的异常编号

@@ -1,7 +1,7 @@
 package cn.iocoder.dong.framework.common.validation;
 
 import cn.hutool.core.util.StrUtil;
-import cn.iocoder.yudao.framework.common.util.validation.ValidationUtils;
+import cn.iocoder.dong.framework.common.util.validation.ValidationUtils;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

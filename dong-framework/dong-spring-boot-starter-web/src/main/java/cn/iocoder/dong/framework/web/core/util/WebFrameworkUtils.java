@@ -1,9 +1,9 @@
 package cn.iocoder.dong.framework.web.core.util;
 
 import cn.hutool.core.util.NumberUtil;
-import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
-import cn.iocoder.yudao.framework.common.pojo.CommonResult;
-import cn.iocoder.yudao.framework.web.config.WebProperties;
+import cn.iocoder.dong.framework.common.enums.UserTypeEnum;
+import cn.iocoder.dong.framework.common.pojo.CommonResult;
+import cn.iocoder.dong.framework.web.config.WebProperties;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;

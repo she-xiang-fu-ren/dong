@@ -1,7 +1,7 @@
 package cn.iocoder.dong.framework.xss.core.filter;
 
-import cn.iocoder.yudao.framework.xss.config.XssProperties;
-import cn.iocoder.yudao.framework.xss.core.clean.XssCleaner;
+import cn.iocoder.dong.framework.xss.config.XssProperties;
+import cn.iocoder.dong.framework.xss.core.clean.XssCleaner;
 import lombok.AllArgsConstructor;
 import org.springframework.util.PathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
