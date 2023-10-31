@@ -101,7 +101,7 @@
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
-                <scope>provided</scope> <!-- 设置为 provided，只有工具类需要使用到 -->
+<!--                <scope>provided</scope> &lt;!&ndash; 设置为 provided，只有工具类需要使用到 &ndash;&gt;-->
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.datatype</groupId>
@@ -130,6 +130,11 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>transmittable-thread-local</artifactId>
             </dependency>
+
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+        </dependency>
 
             <!-- Test 测试相关 -->
             <dependency>

@@ -13,6 +13,10 @@
         <module>dong-common</module>
         <module>dong-spring-boot-starter-mybatis</module>
         <module>dong-spring-boot-starter-web</module>
+        <module>dong-spring-boot-starter-banner</module>
+        <module>dong-spring-boot-starter-file</module>
+        <module>dong-spring-boot-starter-protection</module>
+        <module>dong-spring-boot-starter-redis</module>
     </modules>
 
     <artifactId>dong-framework</artifactId>

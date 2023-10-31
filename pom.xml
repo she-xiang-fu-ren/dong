@@ -10,6 +10,9 @@
     <modules>
         <module>dong-dependencies</module>
         <module>dong-framework</module>
+        <module>dong_server</module>
+        <module>dong-ui</module>
+        <module>dong-module-system</module>
     </modules>
 
     <name>${project.artifactId}</name>

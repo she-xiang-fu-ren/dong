@@ -149,7 +149,21 @@ public class JsonUtils {
             throw new RuntimeException(e);
         }
     }
+    public static  <T> T toObj(String str, Class<T> clz) {
+        try {
+            return objectMapper.readValue(str, clz);
+        } catch (Exception e) {
+            throw new UnsupportedOperationException(e);
+        }
+    }
 
+    public static <T> String toStr(T t) {
+        try {
+            return objectMapper.writeValueAsString(t);
+        } catch (Exception e) {
+            throw new UnsupportedOperationException(e);
+        }
+    }
     public static boolean isJson(String text) {
         return JSONUtil.isTypeJSON(text);
     }
