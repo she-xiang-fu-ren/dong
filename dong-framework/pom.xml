@@ -17,6 +17,7 @@
         <module>dong-spring-boot-starter-file</module>
         <module>dong-spring-boot-starter-protection</module>
         <module>dong-spring-boot-starter-redis</module>
+        <module>dong-spring-boot-starter-biz-error-code</module>
     </modules>
 
     <artifactId>dong-framework</artifactId>

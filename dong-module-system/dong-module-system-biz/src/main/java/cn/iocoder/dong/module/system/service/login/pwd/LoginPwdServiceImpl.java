@@ -1,20 +1,22 @@
 package cn.iocoder.dong.module.system.service.login.pwd;
 
-import cn.iocoder.dong.module.system.dal.user.entity.UserDO;
+import cn.iocoder.dong.module.system.dal.dataobject.user.UserDO;
 import cn.iocoder.dong.module.system.service.help.UserSessionHelper;
 import cn.iocoder.dong.module.system.service.user.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+
 import static cn.iocoder.dong.framework.common.exception.util.ServiceExceptionUtil.exception;
-import static cn.iocoder.dong.module.system.ErrorCodeConstants.*;
+import static cn.iocoder.dong.module.system.ErrorCodeConstants.AUTH_LOGIN_USER_DISABLED;
 
 @Service
 public class LoginPwdServiceImpl implements LoginPwdService{
 
-    @Autowired
+    @Resource
     private UserService userService;
 
-    @Autowired
+    @Resource
     private UserSessionHelper userSessionHelper;
 
 
@@ -27,10 +29,12 @@ public class LoginPwdServiceImpl implements LoginPwdService{
             //记录日志
             throw exception(AUTH_LOGIN_USER_DISABLED);
         }
+
         //校验密码
         if (!userService.isPasswordMatch(password,userDO.getUserPassword())){
-            throw exception(AUTH_LOGIN_BAD_CREDENTIALS);
+//            throw exception(AUTH_LOGIN_BAD_CREDENTIALS);
         }
-        return userSessionHelper.genSession(userDO.getId());
+//        String s = userSessionHelper.genSession(userDO.getId());
+        return "";
     }
 }

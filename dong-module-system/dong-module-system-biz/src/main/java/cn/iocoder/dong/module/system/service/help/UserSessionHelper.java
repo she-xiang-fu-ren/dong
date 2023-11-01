@@ -32,7 +32,7 @@ public class UserSessionHelper {
     private StringRedisTemplate stringRedisTemplate;
     @Component
     @Data
-    @ConfigurationProperties("paicoding.jwt")
+    @ConfigurationProperties("dong.jwt")
     public static class JwtProperties {
         /**
          * 签发人
@@ -61,7 +61,7 @@ public class UserSessionHelper {
 
     public String genSession(Long userId) {
         // 1.生成jwt格式的会话，内部持有有效期，用户信息
-        String session = JsonUtils.toStr(MapUtils.create("s", UUID.randomUUID().toString(), "u", userId));
+        String session = JsonUtils.toStr(MapUtils.create("s", UUID.randomUUID().toString().replace("-",""), "u", userId));
         String token = JWT.create().withIssuer(jwtProperties.getIssuer()).withExpiresAt(new Date(System.currentTimeMillis() + jwtProperties.getExpire()))
                 .withPayload(session)
                 .sign(algorithm);

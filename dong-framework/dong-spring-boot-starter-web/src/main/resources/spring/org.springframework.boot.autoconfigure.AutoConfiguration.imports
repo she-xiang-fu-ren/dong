@@ -1,5 +1,5 @@
-cn.iocoder.yudao.framework.apilog.config.YudaoApiLogAutoConfiguration
-cn.iocoder.yudao.framework.jackson.config.YudaoJacksonAutoConfiguration
-cn.iocoder.yudao.framework.swagger.config.YudaoSwaggerAutoConfiguration
-cn.iocoder.yudao.framework.web.config.YudaoWebAutoConfiguration
-cn.iocoder.yudao.framework.xss.config.YudaoXssAutoConfiguration
+cn.iocoder.dong.framework.apilog.config.YudaoApiLogAutoConfiguration
+cn.iocoder.dong.framework.jackson.config.YudaoJacksonAutoConfiguration
+cn.iocoder.dong.framework.swagger.config.YudaoSwaggerAutoConfiguration
+cn.iocoder.dong.framework.web.config.YudaoWebAutoConfiguration
+cn.iocoder.dong.framework.xss.config.YudaoXssAutoConfiguration

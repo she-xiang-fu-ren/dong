@@ -1,7 +1,7 @@
-package cn.iocoder.dong.module.system.dal.user.mapper;
+package cn.iocoder.dong.module.system.dal.mysql.user;
 
 import cn.iocoder.dong.framework.mybatis.core.mapper.BaseMapperX;
-import cn.iocoder.dong.module.system.dal.user.entity.UserDO;
+import cn.iocoder.dong.module.system.dal.dataobject.user.UserDO;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

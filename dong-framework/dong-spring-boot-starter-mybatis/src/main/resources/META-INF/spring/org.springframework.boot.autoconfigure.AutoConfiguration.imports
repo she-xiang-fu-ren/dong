@@ -1,0 +1,2 @@
+cn.iocoder.dong.framework.datasource.config.YudaoDataSourceAutoConfiguration
+cn.iocoder.dong.framework.mybatis.config.YudaoMybatisAutoConfiguration

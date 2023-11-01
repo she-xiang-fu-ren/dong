@@ -1,22 +1,25 @@
 package cn.iocoder.dong.module.system.service.user;
-
-import cn.iocoder.dong.module.system.dal.user.entity.UserDO;
-import cn.iocoder.dong.module.system.dal.user.mapper.UserMapper;
+import cn.iocoder.dong.module.system.dal.dataobject.user.UserDO;
 import cn.iocoder.dong.module.system.service.help.UserPwdEncoder;
-import org.springframework.beans.factory.annotation.Autowired;
+import cn.iocoder.dong.module.system.dal.mysql.user.*;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
-    @Autowired
+    @Resource
     private UserPwdEncoder userPwdEncoder;
 
     @Override
     public UserDO selectByUserName(String username) {
-        return userMapper.selectByUserName(username);
+        UserDO userDO = userMapper.selectByUserName(username);
+        userDO.setStatus(1);
+        userMapper.updateById(userDO);
+        return userDO;
     }
 
     @Override

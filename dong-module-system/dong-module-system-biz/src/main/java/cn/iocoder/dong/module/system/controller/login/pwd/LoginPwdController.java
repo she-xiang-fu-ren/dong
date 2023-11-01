@@ -2,13 +2,12 @@ package cn.iocoder.dong.module.system.controller.login.pwd;
 
 import cn.iocoder.dong.framework.common.pojo.CommonResult;
 import cn.iocoder.dong.module.system.service.login.pwd.LoginPwdService;
-import org.apache.catalina.manager.util.SessionUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,7 +19,7 @@ import static cn.iocoder.dong.module.system.ErrorCodeConstants.AUTH_LOGIN_FAILED
 @RequestMapping("/system")
 public class LoginPwdController {
 
-    @Autowired
+    @Resource
     private LoginPwdService loginPwdService;
 
     @PostMapping("/pwd/login")

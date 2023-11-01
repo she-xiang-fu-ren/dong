@@ -1,6 +1,6 @@
 package cn.iocoder.dong.module.system.service.user;
 
-import cn.iocoder.dong.module.system.dal.user.entity.UserDO;
+import cn.iocoder.dong.module.system.dal.dataobject.user.UserDO;
 
 public interface UserService {
     /**
