@@ -1,15 +1,15 @@
 package cn.iocoder.dong.module.system.controller.user;
 
 import cn.iocoder.dong.framework.common.pojo.CommonResult;
+import cn.iocoder.dong.module.system.controller.user.vo.UserInfoVO;
+import cn.iocoder.dong.module.system.controller.user.vo.UserVO;
 import cn.iocoder.dong.module.system.dal.dataobject.user.UserDO;
+import cn.iocoder.dong.module.system.dal.dataobject.user.UserInfoDO;
 import cn.iocoder.dong.module.system.service.user.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -29,10 +29,13 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/create")
-    public CommonResult<UserDO> create(@RequestParam(name = "username") String username,
-                                       @RequestParam(name = "password") String password,
+    public CommonResult<String> create(@RequestBody UserVO userVO,
                                        HttpServletResponse response){
-        UserDO user = userService.createUser(username,password);
-        return success(user);
+        return success(userService.createUser(userVO));
+    }
+
+    @PostMapping("/create/info")
+    public CommonResult<String> createInfo(@RequestBody UserInfoVO userInfoVO){
+        return success(userService.createUserInfo(userInfoVO));
     }
 }

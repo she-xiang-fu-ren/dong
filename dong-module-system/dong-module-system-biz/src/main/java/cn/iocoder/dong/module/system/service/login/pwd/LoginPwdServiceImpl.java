@@ -8,8 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 import static cn.iocoder.dong.framework.common.exception.util.ServiceExceptionUtil.exception;
-import static cn.iocoder.dong.module.system.ErrorCodeConstants.AUTH_LOGIN_BAD_CREDENTIALS;
-import static cn.iocoder.dong.module.system.ErrorCodeConstants.AUTH_LOGIN_USER_DISABLED;
+import static cn.iocoder.dong.module.system.ErrorCodeConstants.*;
 
 @Service
 public class LoginPwdServiceImpl implements LoginPwdService{
@@ -28,7 +27,7 @@ public class LoginPwdServiceImpl implements LoginPwdService{
         if (userDO == null){
             //说明不存在当前账号
             //记录日志
-            throw exception(AUTH_LOGIN_USER_DISABLED);
+            throw exception(AUTH_LOGIN_NOT_USER_DISABLED);
         }
 
         //校验密码

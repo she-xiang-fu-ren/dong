@@ -1,6 +1,10 @@
 package cn.iocoder.dong.module.system.service.user;
 
+import cn.hutool.system.UserInfo;
+import cn.iocoder.dong.module.system.controller.user.vo.UserInfoVO;
+import cn.iocoder.dong.module.system.controller.user.vo.UserVO;
 import cn.iocoder.dong.module.system.dal.dataobject.user.UserDO;
+import cn.iocoder.dong.module.system.dal.dataobject.user.UserInfoDO;
 
 public interface UserService {
     /**
@@ -21,9 +25,21 @@ public interface UserService {
 
     /**
      * 创建账号
-     * @param username 用户名
-     * @param password 密码
      * @return 返回
      */
-    UserDO createUser(String username, String password);
+    String createUser(UserVO userVO);
+
+    /**
+     * 根据之间id查询用户
+     * @param userId
+     * @return
+     */
+    UserDO findById(Long userId);
+
+    /**
+     * 创建用户详情
+     * @param userInfoVO
+     * @return
+     */
+    String createUserInfo(UserInfoVO userInfoVO);
 }

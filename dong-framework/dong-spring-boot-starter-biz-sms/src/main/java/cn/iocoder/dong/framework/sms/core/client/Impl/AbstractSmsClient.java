@@ -1,6 +1,5 @@
 package cn.iocoder.dong.framework.sms.core.client.Impl;
 
-import cn.iocoder.dong.framework.common.core.KeyValue;
 import cn.iocoder.dong.framework.sms.core.client.Impl.aliyun.AliyunSmsCodeMapping;
 import cn.iocoder.dong.framework.sms.core.client.SmsClient;
 import cn.iocoder.dong.framework.sms.core.client.SmsCodeMapping;
@@ -8,7 +7,7 @@ import cn.iocoder.dong.framework.sms.core.client.SmsCommonResult;
 import cn.iocoder.dong.framework.sms.core.client.dto.SmsSendRespDTO;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.List;
+import java.util.Map;
 
 @Slf4j
 public abstract class AbstractSmsClient implements SmsClient {
@@ -29,7 +28,7 @@ public abstract class AbstractSmsClient implements SmsClient {
      * @return 短信发送结果
      */
     @Override
-    public final SmsCommonResult<SmsSendRespDTO> sendSms(String mobile, List<KeyValue<String, Object>> templateParams) {
+    public final SmsCommonResult<SmsSendRespDTO> sendSms(String mobile, Map<String, Object> templateParams) {
 
         // 执行短信发送
         SmsCommonResult<SmsSendRespDTO> result;
@@ -46,7 +45,7 @@ public abstract class AbstractSmsClient implements SmsClient {
         return result;
     }
 
-    protected abstract SmsCommonResult<SmsSendRespDTO> doSendSms(String mobile, List<KeyValue<String, Object>> templateParams)
+    protected abstract SmsCommonResult<SmsSendRespDTO> doSendSms(String mobile, Map<String, Object> templateParams)
             throws Throwable;
 
     protected abstract void doInit() throws Throwable;

@@ -3,6 +3,8 @@ package cn.iocoder.dong.framework.sms.core.client.Impl.aliyun;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.iocoder.dong.framework.common.core.KeyValue;
+import cn.iocoder.dong.framework.common.util.collection.MapUtils;
+import cn.iocoder.dong.framework.common.util.json.JsonUtils;
 import cn.iocoder.dong.framework.sms.config.YudaoSmsAutoConfiguration;
 import cn.iocoder.dong.framework.sms.core.client.Impl.AbstractSmsClient;
 import cn.iocoder.dong.framework.sms.core.client.SmsCommonResult;
@@ -19,6 +21,7 @@ import com.aliyuncs.profile.IClientProfile;
 import com.google.common.annotations.VisibleForTesting;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
 import java.util.function.Function;
@@ -32,15 +35,15 @@ public class AliyunSmsClient extends AbstractSmsClient {
     
 
     @Override
-    protected SmsCommonResult<SmsSendRespDTO> doSendSms(String mobile, List<KeyValue<String, Object>> templateParams) throws Throwable {
+    protected SmsCommonResult<SmsSendRespDTO> doSendSms(String mobile, Map<String, Object> templateParams) throws Throwable {
         SendSmsRequest request = new SendSmsRequest();
         request.setPhoneNumbers(mobile);
         request.setPhoneNumbers(mobile);
         request.setSignName(smsProperties.getSignName());
         request.setTemplateCode(smsProperties.getTemplateCode());
-//        request.setTemplateParam(JsonUtils.toJsonString(MapUtils.convertMap(templateParams)));
-        String msgCode = getMsgCode();
-        request.setTemplateParam("{\"code\":\"" + msgCode + "\"}");
+        request.setTemplateParam(JsonUtils.toJsonString(templateParams));
+//        String msgCode = getMsgCode();
+//        request.setTemplateParam("{\"code\":\"" + msgCode + "\"}");
         return invoke(request, response ->{
             SmsSendRespDTO smsSendRespDTO = new SmsSendRespDTO();
             smsSendRespDTO.setSerialNo(response.getBizId());

@@ -1,9 +1,8 @@
 package cn.iocoder.dong.framework.sms.core.client;
 
-import cn.iocoder.dong.framework.common.core.KeyValue;
 import cn.iocoder.dong.framework.sms.core.client.dto.SmsSendRespDTO;
 
-import java.util.List;
+import java.util.Map;
 
 public interface SmsClient {
     /**
@@ -14,5 +13,5 @@ public interface SmsClient {
      * @return 短信发送结果
      */
     SmsCommonResult<SmsSendRespDTO> sendSms(String mobile,
-                                            List<KeyValue<String, Object>> templateParams);
+                                            Map<String, Object> templateParams);
 }
