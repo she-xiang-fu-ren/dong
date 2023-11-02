@@ -3,6 +3,7 @@ package cn.iocoder.dong.module.system.service.help;
 import cn.hutool.core.lang.UUID;
 import cn.iocoder.dong.framework.common.util.map.MapUtils;
 import cn.iocoder.dong.framework.common.util.json.JsonUtils;
+import cn.iocoder.dong.module.system.dal.dataobject.user.UserDO;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -18,6 +19,7 @@ import org.springframework.util.Base64Utils;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 使用jwt来存储用户token，则不需要后端来存储session了
@@ -61,14 +63,13 @@ public class UserSessionHelper {
 
     public String genSession(Long userId) {
         // 1.生成jwt格式的会话，内部持有有效期，用户信息
-        String session = JsonUtils.toStr(MapUtils.create("s", UUID.randomUUID().toString().replace("-",""), "u", userId));
+//        String session = JsonUtils.toStr(MapUtils.create("s", UUID.randomUUID().toString().replace("-",""), "u", userId));
         String token = JWT.create().withIssuer(jwtProperties.getIssuer()).withExpiresAt(new Date(System.currentTimeMillis() + jwtProperties.getExpire()))
-                .withPayload(session)
                 .sign(algorithm);
 
         // 2.使用jwt生成的token时，后端可以不存储这个session信息, 完全依赖jwt的信息
         // 但是需要考虑到用户登出，需要主动失效这个token，而jwt本身无状态，所以再这里的redis做一个简单的token -> userId的缓存，用于双重判定
-        stringRedisTemplate.opsForValue().set(token, String.valueOf(userId), jwtProperties.getExpire() / 1000);
+        stringRedisTemplate.opsForValue().set(token, String.valueOf(userId), jwtProperties.getExpire() / 1000, TimeUnit.SECONDS);
 //        RedisClient.setStrWithExpire(token, String.valueOf(userId), jwtProperties.getExpire() / 1000);
         return token;
     }

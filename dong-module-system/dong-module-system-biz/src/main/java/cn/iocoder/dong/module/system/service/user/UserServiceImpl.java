@@ -31,7 +31,8 @@ public class UserServiceImpl implements UserService {
     public UserDO createUser(String username, String password) {
         UserDO userDO = new UserDO();
         userDO.setUserName(username);
-        userDO.setUserPassword(password);
+        userDO.setUserPassword(userPwdEncoder.encPwd(password));
+        userDO.setThirdAccountId("100");
         userDO.setDeleted(0);
         userDO.setStatus(0);
         userDO.setLoginType(0);

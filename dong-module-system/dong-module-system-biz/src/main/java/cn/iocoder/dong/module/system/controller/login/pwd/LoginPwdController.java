@@ -15,14 +15,17 @@ import static cn.iocoder.dong.framework.common.pojo.CommonResult.error;
 import static cn.iocoder.dong.framework.common.pojo.CommonResult.success;
 import static cn.iocoder.dong.module.system.ErrorCodeConstants.AUTH_LOGIN_FAILED_MIXED;
 
+/**
+ * 基于账号密码登录
+ */
 @RestController
-@RequestMapping("/system")
+@RequestMapping("/system/pwd")
 public class LoginPwdController {
 
     @Resource
     private LoginPwdService loginPwdService;
 
-    @PostMapping("/pwd/login")
+    @PostMapping("/login")
     public CommonResult<String> PwdLogin(@RequestParam(name = "username") String username,
                                  @RequestParam(name = "password") String password,
                                  HttpServletResponse response){

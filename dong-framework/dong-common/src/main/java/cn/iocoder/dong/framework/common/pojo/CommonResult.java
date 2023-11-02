@@ -108,5 +108,4 @@ public class CommonResult<T> implements Serializable {
     public static <T> CommonResult<T> error(ServiceException serviceException) {
         return error(serviceException.getCode(), serviceException.getMessage());
     }
-
 }

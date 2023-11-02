@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 import static cn.iocoder.dong.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.dong.module.system.ErrorCodeConstants.AUTH_LOGIN_BAD_CREDENTIALS;
 import static cn.iocoder.dong.module.system.ErrorCodeConstants.AUTH_LOGIN_USER_DISABLED;
 
 @Service
@@ -32,9 +33,8 @@ public class LoginPwdServiceImpl implements LoginPwdService{
 
         //校验密码
         if (!userService.isPasswordMatch(password,userDO.getUserPassword())){
-//            throw exception(AUTH_LOGIN_BAD_CREDENTIALS);
+            throw exception(AUTH_LOGIN_BAD_CREDENTIALS);
         }
-//        String s = userSessionHelper.genSession(userDO.getId());
-        return "";
+        return userSessionHelper.genSession(userDO.getId());
     }
 }
