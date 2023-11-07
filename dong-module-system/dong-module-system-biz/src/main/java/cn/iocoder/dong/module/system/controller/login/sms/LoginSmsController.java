@@ -22,7 +22,7 @@ public class LoginSmsController {
      * @param phone 手机号
      * @return
      */
-    @PostMapping("/get/code")
+    @GetMapping("/get/code")
     public CommonResult<String> getSmsCode(@RequestParam("phone") String phone){
         return success(loginSmsService.getSmsCode(phone));
     }

@@ -8,6 +8,7 @@ import cn.iocoder.dong.module.system.controller.login.sms.vo.LoginSmsVO;
 import cn.iocoder.dong.module.system.dal.dataobject.user.UserDO;
 import cn.iocoder.dong.module.system.dal.dataobject.user.UserInfoDO;
 import cn.iocoder.dong.module.system.dal.mysql.user.UserInfoMapper;
+import cn.iocoder.dong.module.system.dal.redis.RedisKeyConstants;
 import cn.iocoder.dong.module.system.service.help.UserSessionHelper;
 import cn.iocoder.dong.module.system.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,11 +37,9 @@ public class LoginSmsServiceImpl implements LoginSmsService{
     @Resource
     private UserSessionHelper userSessionHelper;
 
-    private final String sms = "sms:";
-
     @Override
     public String getSmsCode(String phone) {
-        String key = sms+phone;
+        String key = RedisKeyConstants.SMS_CODE +phone;
         //判断缓存中是否存在该手机号，如果存在说明已经发送过
         if (stringRedisTemplate.hasKey(key)){
             throw exception(SMS_CODE_SEND_TOO_FAST);
@@ -62,7 +61,7 @@ public class LoginSmsServiceImpl implements LoginSmsService{
     @Override
     public String login(LoginSmsVO loginSmsVO) {
         //校验验证码是否正确
-        String codeCa = stringRedisTemplate.opsForValue().get(sms + loginSmsVO.getPhone());
+        String codeCa = stringRedisTemplate.opsForValue().get(RedisKeyConstants.SMS_CODE + loginSmsVO.getPhone());
         //有俩种情况缓存中验证码为空，一种是没有获取验证码直接登录，一种是在缓存中验证码过期了。第一种就暂时不考虑。写的demo
         if (codeCa==null){
             throw exception(SMS_CODE_EXPIRED);

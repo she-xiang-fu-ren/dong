@@ -82,6 +82,10 @@
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct-jdk8</artifactId> <!-- use mapstruct-jdk8 for Java 8 or higher -->
             </dependency>
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>dingtalk</artifactId>
+        </dependency>
             <dependency>
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct-processor</artifactId>
@@ -108,6 +112,16 @@
                 <artifactId>jackson-datatype-jsr310</artifactId>
                 <scope>provided</scope> <!-- 设置为 provided，只有工具类需要使用到 -->
             </dependency>
+        <dependency>
+            <groupId>pro.fessional</groupId>
+            <artifactId>kaptcha</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>servlet-api</artifactId>
+                    <groupId>javax.servlet</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
             <dependency>
                 <groupId>org.slf4j</groupId>

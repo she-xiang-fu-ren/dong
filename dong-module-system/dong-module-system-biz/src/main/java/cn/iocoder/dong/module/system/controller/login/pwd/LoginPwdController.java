@@ -1,11 +1,9 @@
 package cn.iocoder.dong.module.system.controller.login.pwd;
 
 import cn.iocoder.dong.framework.common.pojo.CommonResult;
+import cn.iocoder.dong.module.system.controller.login.pwd.vo.LoginPwdVO;
 import cn.iocoder.dong.module.system.service.login.pwd.LoginPwdService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
@@ -26,10 +24,9 @@ public class LoginPwdController {
     private LoginPwdService loginPwdService;
 
     @PostMapping("/login")
-    public CommonResult<String> PwdLogin(@RequestParam(name = "username") String username,
-                                 @RequestParam(name = "password") String password,
+    public CommonResult<String> PwdLogin(@RequestBody LoginPwdVO loginPwdVO,
                                  HttpServletResponse response){
-        String s  = loginPwdService.reginter(username,password);
+        String s  = loginPwdService.reginter(loginPwdVO);
         if (s!=null){
             Cookie cookie = new Cookie("dong",s);
             response.addCookie(cookie);

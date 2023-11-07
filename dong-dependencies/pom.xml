@@ -23,12 +23,17 @@
         <servlet.versoin>2.5</servlet.versoin>
         <!-- DB 相关 -->
         <druid.version>1.2.19</druid.version>
+        <dingtalk.version>2.0.14</dingtalk.version>
         <mybatis-plus.version>3.5.3.2</mybatis-plus.version>
         <mybatis-plus-generator.version>3.5.3.2</mybatis-plus-generator.version>
         <dynamic-datasource.version>3.6.1</dynamic-datasource.version>
         <mybatis-plus-join.version>1.4.6</mybatis-plus-join.version>
         <redisson.version>3.18.0</redisson.version>
         <dm8.jdbc.version>8.1.2.141</dm8.jdbc.version>
+        <!--验证码-->
+        <kaptcha.version>2.3.3</kaptcha.version>
+        <!--Swagger文档-->
+        <knife4j-swagger>4.0.0</knife4j-swagger>
         <!-- 服务保障相关 -->
         <lock4j.version>2.2.3</lock4j.version>
         <resilience4j.version>1.7.1</resilience4j.version>
@@ -90,6 +95,19 @@
                 <groupId>com.auth0</groupId>
                 <artifactId>java-jwt</artifactId>
                 <version>${jwt.version}</version>
+            </dependency>
+            <!--Swagger-->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
+                <version>${knife4j-swagger}</version>
+            </dependency>
+
+            <!-- 验证码 -->
+            <dependency>
+                <groupId>pro.fessional</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>${kaptcha.version}</version>
             </dependency>
 
             <!-- 业务组件 -->
@@ -207,6 +225,11 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>dingtalk</artifactId>
+                <version>${dingtalk.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.baomidou</groupId>

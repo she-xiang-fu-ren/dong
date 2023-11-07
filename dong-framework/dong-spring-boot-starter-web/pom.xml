@@ -17,6 +17,10 @@
             <groupId>cn.iocoder.boot</groupId>
             <artifactId>dong-common</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.github.xiaoymin</groupId>-->
+<!--            <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>-->
+<!--        </dependency>-->
 
         <!-- Web 相关 -->
         <dependency>
