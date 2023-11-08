@@ -1,9 +1,7 @@
 package cn.iocoder.dong.module.system.service.login.sms;
 
-import cn.hutool.core.lang.Assert;
 import cn.hutool.core.map.MapUtil;
-import cn.iocoder.dong.framework.sms.core.client.Impl.aliyun.AliyunSmsClient;
-import cn.iocoder.dong.framework.sms.core.client.SmsClient;
+import cn.iocoder.dong.module.system.api.sms.SmsCodeApi;
 import cn.iocoder.dong.module.system.controller.login.sms.vo.LoginSmsVO;
 import cn.iocoder.dong.module.system.dal.dataobject.user.UserDO;
 import cn.iocoder.dong.module.system.dal.dataobject.user.UserInfoDO;
@@ -11,7 +9,6 @@ import cn.iocoder.dong.module.system.dal.mysql.user.UserInfoMapper;
 import cn.iocoder.dong.module.system.dal.redis.RedisKeyConstants;
 import cn.iocoder.dong.module.system.service.help.UserSessionHelper;
 import cn.iocoder.dong.module.system.service.user.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +34,9 @@ public class LoginSmsServiceImpl implements LoginSmsService{
     @Resource
     private UserSessionHelper userSessionHelper;
 
+    @Resource
+    private SmsCodeApi smsCodeApi;
+
     @Override
     public String getSmsCode(String phone) {
         String key = RedisKeyConstants.SMS_CODE +phone;
@@ -44,11 +44,10 @@ public class LoginSmsServiceImpl implements LoginSmsService{
         if (stringRedisTemplate.hasKey(key)){
             throw exception(SMS_CODE_SEND_TOO_FAST);
         }
-        //TODO:目前来说支持阿里云短信、可扩展。一个短信服务就是一个实现类。只要还是SmsClient接口
-        SmsClient smsClient = new AliyunSmsClient();
         //获取验证码
         String code = createCode();
-        smsClient.sendSms(phone, MapUtil.of("code",code));
+        //讲发送验证码的接口暴露出去，供其他地方能调用
+        smsCodeApi.sendSms(phone, MapUtil.of("code",code));
         stringRedisTemplate.opsForValue().set(key,code,5, TimeUnit.MINUTES);
         return "发送成功！";
     }
