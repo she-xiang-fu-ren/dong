@@ -1,6 +1,5 @@
 package cn.iocoder.dong.framework.web.config;
 
-import cn.iocoder.dong.framework.apilog.core.service.ApiErrorLogFrameworkService;
 import cn.iocoder.dong.framework.common.enums.WebFilterOrderEnum;
 import cn.iocoder.dong.framework.web.core.filter.CacheRequestBodyFilter;
 import cn.iocoder.dong.framework.web.core.filter.DemoFilter;
@@ -58,8 +57,8 @@ public class YudaoWebAutoConfiguration implements WebMvcConfigurer {
     }
 
     @Bean
-    public GlobalExceptionHandler globalExceptionHandler(ApiErrorLogFrameworkService ApiErrorLogFrameworkService) {
-        return new GlobalExceptionHandler(applicationName, ApiErrorLogFrameworkService);
+    public GlobalExceptionHandler globalExceptionHandler() {
+        return new GlobalExceptionHandler(applicationName);
     }
 
     @Bean

@@ -6,6 +6,7 @@ import cn.iocoder.dong.module.system.service.login.pwd.LoginPwdService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.annotation.security.PermitAll;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,6 +25,7 @@ public class LoginPwdController {
     private LoginPwdService loginPwdService;
 
     @PostMapping("/login")
+    @PermitAll
     public CommonResult<String> PwdLogin(@RequestBody LoginPwdVO loginPwdVO,
                                  HttpServletResponse response){
         String s  = loginPwdService.reginter(loginPwdVO);

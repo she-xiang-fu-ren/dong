@@ -1,22 +1,10 @@
 package cn.iocoder.dong.framework.apilog.config;
 
-import cn.iocoder.dong.framework.apilog.core.filter.ApiAccessLogFilter;
-import cn.iocoder.dong.framework.apilog.core.service.ApiAccessLogFrameworkService;
-import cn.iocoder.dong.framework.apilog.core.service.ApiAccessLogFrameworkServiceImpl;
-import cn.iocoder.dong.framework.apilog.core.service.ApiErrorLogFrameworkService;
-import cn.iocoder.dong.framework.apilog.core.service.ApiErrorLogFrameworkServiceImpl;
-import cn.iocoder.dong.framework.common.enums.WebFilterOrderEnum;
-import cn.iocoder.dong.framework.web.config.WebProperties;
 import cn.iocoder.dong.framework.web.config.YudaoWebAutoConfiguration;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
+
 //import cn.iocoder.dong.module.infra.api.logger.ApiAccessLogApi;
 //import cn.iocoder.dong.module.infra.api.logger.ApiErrorLogApi;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
-
-import javax.servlet.Filter;
 
 @AutoConfiguration(after = YudaoWebAutoConfiguration.class)
 public class YudaoApiLogAutoConfiguration {

@@ -1,0 +1,2 @@
+cn.iocoder.dong.framework.security.config.YudaoSecurityAutoConfiguration
+cn.iocoder.dong.framework.security.config.YudaoWebSecurityConfigurerAdapter

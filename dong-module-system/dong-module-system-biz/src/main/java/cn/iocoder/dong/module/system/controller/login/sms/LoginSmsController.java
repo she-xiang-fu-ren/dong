@@ -6,6 +6,8 @@ import cn.iocoder.dong.module.system.service.login.sms.LoginSmsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.PermitAll;
+
 import static cn.iocoder.dong.framework.common.pojo.CommonResult.success;
 
 /**
@@ -28,6 +30,7 @@ public class LoginSmsController {
     }
 
     @PostMapping("login")
+    @PermitAll
     public CommonResult<String> login(@RequestBody LoginSmsVO loginSmsVO){
         return success(loginSmsService.login(loginSmsVO));
     }

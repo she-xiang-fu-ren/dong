@@ -1,10 +1,7 @@
 package cn.iocoder.dong.module.system.service.user;
 
-import cn.hutool.system.UserInfo;
-import cn.iocoder.dong.module.system.controller.user.vo.UserInfoVO;
 import cn.iocoder.dong.module.system.controller.user.vo.UserVO;
-import cn.iocoder.dong.module.system.dal.dataobject.user.UserDO;
-import cn.iocoder.dong.module.system.dal.dataobject.user.UserInfoDO;
+import cn.iocoder.dong.module.system.dal.dataobject.entity.SysUserDO;
 
 public interface UserService {
     /**
@@ -12,7 +9,7 @@ public interface UserService {
      * @param username
      * @return
      */
-    UserDO selectByUserName(String username);
+    SysUserDO selectByUserName(String username);
 
     /**
      * 判断密码是否匹配
@@ -34,12 +31,19 @@ public interface UserService {
      * @param userId
      * @return
      */
-    UserDO findById(Long userId);
+    SysUserDO findById(Long userId);
 
     /**
-     * 创建用户详情
-     * @param userInfoVO
+     * 根据手机号获取用户
+     * @param phone
      * @return
      */
-    String createUserInfo(UserInfoVO userInfoVO);
+    SysUserDO getPhone(String phone);
+
+//    /**
+//     * 创建用户详情
+//     * @param userInfoVO
+//     * @return
+//     */
+//    String createUserInfo(UserInfoVO userInfoVO);
 }

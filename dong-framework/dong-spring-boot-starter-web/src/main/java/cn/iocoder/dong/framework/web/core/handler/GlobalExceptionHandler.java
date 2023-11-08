@@ -4,7 +4,6 @@ import cn.hutool.core.exceptions.ExceptionUtil;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.iocoder.dong.framework.apilog.core.service.ApiErrorLog;
-import cn.iocoder.dong.framework.apilog.core.service.ApiErrorLogFrameworkService;
 import cn.iocoder.dong.framework.common.exception.ServiceException;
 import cn.iocoder.dong.framework.common.pojo.CommonResult;
 import cn.iocoder.dong.framework.common.util.json.JsonUtils;
@@ -47,8 +46,6 @@ import static cn.iocoder.dong.framework.common.exception.enums.GlobalErrorCodeCo
 public class GlobalExceptionHandler {
 
     private final String applicationName;
-
-    private final ApiErrorLogFrameworkService apiErrorLogFrameworkService;
 
     /**
      * 处理所有异常，主要是提供给 Filter 使用
@@ -242,7 +239,7 @@ public class GlobalExceptionHandler {
             // 初始化 errorLog
             initExceptionLog(errorLog, req, e);
             // 执行插入 errorLog
-            apiErrorLogFrameworkService.createApiErrorLog(errorLog);
+//            apiErrorLogFrameworkService.createApiErrorLog(errorLog);
         } catch (Throwable th) {
             log.error("[createExceptionLog][url({}) log({}) 发生异常]", req.getRequestURI(),  JsonUtils.toJsonString(errorLog), th);
         }

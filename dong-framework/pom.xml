@@ -19,6 +19,7 @@
         <module>dong-spring-boot-starter-redis</module>
         <module>dong-spring-boot-starter-biz-error-code</module>
         <module>dong-spring-boot-starter-biz-sms</module>
+        <module>dong-spring-boot-starter-security</module>
     </modules>
 
     <artifactId>dong-framework</artifactId>

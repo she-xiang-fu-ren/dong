@@ -54,6 +54,7 @@ public class LoginDdController {
      */
     //接口地址：注意/auth与钉钉登录与分享的回调域名地址一致
     @GetMapping(value = "/auth")
+    @PermitAll
     public String getAccessToken(@RequestParam(value = "authCode")String authCode,@RequestParam("state")String state) throws Exception {
         com.aliyun.dingtalkoauth2_1_0.Client client = authClient();
         GetUserTokenRequest getUserTokenRequest = new GetUserTokenRequest()

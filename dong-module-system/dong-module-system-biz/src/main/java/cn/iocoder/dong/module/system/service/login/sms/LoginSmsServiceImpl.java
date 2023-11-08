@@ -3,9 +3,7 @@ package cn.iocoder.dong.module.system.service.login.sms;
 import cn.hutool.core.map.MapUtil;
 import cn.iocoder.dong.module.system.api.sms.SmsCodeApi;
 import cn.iocoder.dong.module.system.controller.login.sms.vo.LoginSmsVO;
-import cn.iocoder.dong.module.system.dal.dataobject.user.UserDO;
-import cn.iocoder.dong.module.system.dal.dataobject.user.UserInfoDO;
-import cn.iocoder.dong.module.system.dal.mysql.user.UserInfoMapper;
+import cn.iocoder.dong.module.system.dal.dataobject.entity.SysUserDO;
 import cn.iocoder.dong.module.system.dal.redis.RedisKeyConstants;
 import cn.iocoder.dong.module.system.service.help.UserSessionHelper;
 import cn.iocoder.dong.module.system.service.user.UserService;
@@ -25,8 +23,6 @@ public class LoginSmsServiceImpl implements LoginSmsService{
     @Resource
     private StringRedisTemplate stringRedisTemplate;
 
-    @Resource
-    private UserInfoMapper userInfoMapper;
 
     @Resource
     private UserService userService;
@@ -69,18 +65,12 @@ public class LoginSmsServiceImpl implements LoginSmsService{
         if (!loginSmsVO.getCode().equals(codeCa)){
             throw exception(SMS_CODE_NOT_CORRECT);
         }
-        //查询用户是否存在
-        UserInfoDO userInfoDO = userInfoMapper.selectByUserPhone(loginSmsVO.getPhone());
-        if (userInfoDO == null){
-            //说明用户第一次登录，需要创建账号
-        }
-        assert userInfoDO != null;
-        UserDO userDo =userService.findById(userInfoDO.getUserId());
+        SysUserDO userDo =userService.getPhone(loginSmsVO.getPhone());
         //判断用户是否被禁用
-        if (userDo.getDeleted().equals(1)||userDo.getStatus().equals(1)){
+        if (userDo.getDelFlag().equals(1)||userDo.getStatus().equals(1)){
             throw exception(AUTH_LOGIN_USER_DISABLED);
         }
-        return userSessionHelper.genSession(userDo.getId());
+        return userSessionHelper.genSession(userDo);
     }
 
     private String createCode() {

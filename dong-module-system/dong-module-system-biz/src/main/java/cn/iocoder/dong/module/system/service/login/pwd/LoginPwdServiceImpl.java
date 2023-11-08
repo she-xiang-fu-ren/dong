@@ -1,7 +1,7 @@
 package cn.iocoder.dong.module.system.service.login.pwd;
 
 import cn.iocoder.dong.module.system.controller.login.pwd.vo.LoginPwdVO;
-import cn.iocoder.dong.module.system.dal.dataobject.user.UserDO;
+import cn.iocoder.dong.module.system.dal.dataobject.entity.SysUserDO;
 import cn.iocoder.dong.module.system.dal.redis.RedisKeyConstants;
 import cn.iocoder.dong.module.system.framework.captcha.CaptchaCodeProperties;
 import cn.iocoder.dong.module.system.service.help.UserSessionHelper;
@@ -30,7 +30,7 @@ public class LoginPwdServiceImpl implements LoginPwdService{
     @Override
     public String reginter(LoginPwdVO loginPwdVO) {
         //查询是否存在当前账号
-        UserDO userDO =userService.selectByUserName(loginPwdVO.getUsername());
+        SysUserDO userDO =userService.selectByUserName(loginPwdVO.getUsername());
         if (userDO == null){
             //说明不存在当前账号
             //记录日志
@@ -42,6 +42,8 @@ public class LoginPwdServiceImpl implements LoginPwdService{
             if (loginPwdVO.getCode()!=null&&s==null){
                 throw exception(SMS_CODE_EXPIRED);
             }
+            //删掉缓存中的验证码
+            stringRedisTemplate.delete(RedisKeyConstants.CAPTCHA_CODE+loginPwdVO.getUuid());
             //校验验证码是否正确
             if (!s.equals(loginPwdVO.getCode())){
                 throw exception(SMS_CODE_NOT_CORRECT);
@@ -49,9 +51,9 @@ public class LoginPwdServiceImpl implements LoginPwdService{
         }
 
         //校验密码
-        if (!userService.isPasswordMatch(loginPwdVO.getPassword(),userDO.getUserPassword())){
+        if (!userService.isPasswordMatch(loginPwdVO.getPassword(),userDO.getPassword())){
             throw exception(AUTH_LOGIN_BAD_CREDENTIALS);
         }
-        return userSessionHelper.genSession(userDO.getId());
+        return userSessionHelper.genSession(userDO);
     }
 }
