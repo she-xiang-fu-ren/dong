@@ -6,6 +6,7 @@ import cn.iocoder.dong.framework.security.core.filter.TokenAuthenticationFilter;
 import cn.iocoder.dong.framework.security.core.handler.AccessDeniedHandlerImpl;
 import cn.iocoder.dong.framework.security.core.handler.AuthenticationEntryPointImpl;
 import cn.iocoder.dong.framework.web.core.handler.GlobalExceptionHandler;
+import cn.iocoder.dong.module.system.api.user.LoginUserApi;
 import org.springframework.beans.factory.config.MethodInvokingFactoryBean;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -71,8 +72,8 @@ public class YudaoSecurityAutoConfiguration {
      * Token 认证过滤器 Bean
      */
     @Bean
-    public TokenAuthenticationFilter authenticationTokenFilter(GlobalExceptionHandler globalExceptionHandler) {
-        return new TokenAuthenticationFilter(securityProperties, globalExceptionHandler);
+    public TokenAuthenticationFilter authenticationTokenFilter(GlobalExceptionHandler globalExceptionHandler, LoginUserApi loginUserApi) {
+        return new TokenAuthenticationFilter(securityProperties, globalExceptionHandler,loginUserApi);
     }
 //
 //    @Bean("ss") // 使用 Spring Security 的缩写，方便使用

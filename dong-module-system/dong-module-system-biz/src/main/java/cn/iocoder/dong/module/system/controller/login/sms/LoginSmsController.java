@@ -7,8 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.PermitAll;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
+import static cn.iocoder.dong.framework.common.pojo.CommonResult.error;
 import static cn.iocoder.dong.framework.common.pojo.CommonResult.success;
+import static cn.iocoder.dong.module.system.ErrorCodeConstants.AUTH_LOGIN_CAPTCHA_CODE_ERROR;
 
 /**
  * 基于手机号短信登录
@@ -31,7 +35,14 @@ public class LoginSmsController {
 
     @PostMapping("login")
     @PermitAll
-    public CommonResult<String> login(@RequestBody LoginSmsVO loginSmsVO){
-        return success(loginSmsService.login(loginSmsVO));
+    public CommonResult<String> login(@RequestBody LoginSmsVO loginSmsVO,HttpServletResponse response){
+        String token = loginSmsService.login(loginSmsVO);
+        if (token != null){
+//            Cookie cookie = new Cookie("token",token);
+//            response.addCookie(cookie);
+            return success(token);
+        }else {
+            return error(AUTH_LOGIN_CAPTCHA_CODE_ERROR);
+        }
     }
 }

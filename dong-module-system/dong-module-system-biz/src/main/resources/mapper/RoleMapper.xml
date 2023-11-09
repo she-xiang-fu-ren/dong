@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.iocoder.dong.module.system.dal.mysql.role.RoleMapper">
+
+    <select id="isRoleAndAdmin" resultType="java.lang.Integer">
+        select count(1) from sys_role a left join sys_user_role b on a.role_id = b.role_id
+        where b.user_id = #{userId} and a.role_key = 'admin'
+    </select>
+
+    <select id="selectListByUserId" resultType="cn.iocoder.dong.module.system.dal.dataobject.entity.SysRoleDO">
+        select a.* from sys_role a left join sys_user_role b on a.role_id = b.role_id
+        where b.user_id = #{userId}
+    </select>
+</mapper>

@@ -1,6 +1,8 @@
 package cn.iocoder.dong.module.system.service.help;
 
 import cn.iocoder.dong.framework.common.util.json.JsonUtils;
+import cn.iocoder.dong.module.system.api.user.dto.SysUserDTO;
+import cn.iocoder.dong.module.system.convert.user.UserConvert;
 import cn.iocoder.dong.module.system.dal.dataobject.entity.SysUserDO;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -30,6 +32,9 @@ import java.util.concurrent.TimeUnit;
 public class UserSessionHelper {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
+
+
+
     @Component
     @Data
     @ConfigurationProperties("dong.jwt")
@@ -64,10 +69,11 @@ public class UserSessionHelper {
 //        String session = JsonUtils.toStr(MapUtils.create("s", UUID.randomUUID().toString().replace("-",""), "u", userId));
         String token = JWT.create().withIssuer(jwtProperties.getIssuer()).withExpiresAt(new Date(System.currentTimeMillis() + jwtProperties.getExpire()))
                 .sign(algorithm);
-
+        //过滤不必要的字段
+        SysUserDTO userDTO = UserConvert.INSTANCE.convert(userDO);
         // 2.使用jwt生成的token时，后端可以不存储这个session信息, 完全依赖jwt的信息
         // 但是需要考虑到用户登出，需要主动失效这个token，而jwt本身无状态，所以再这里的redis做一个简单的token -> userId的缓存，用于双重判定
-        stringRedisTemplate.opsForValue().set(token, JsonUtils.toJsonString(userDO), jwtProperties.getExpire() / 1000, TimeUnit.SECONDS);
+        stringRedisTemplate.opsForValue().set(token, JsonUtils.toJsonString(userDTO), jwtProperties.getExpire() / 1000, TimeUnit.SECONDS);
 //        RedisClient.setStrWithExpire(token, String.valueOf(userId), jwtProperties.getExpire() / 1000);
         return token;
     }

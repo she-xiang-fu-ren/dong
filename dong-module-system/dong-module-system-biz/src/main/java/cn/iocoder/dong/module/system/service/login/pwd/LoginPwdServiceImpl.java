@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
+import java.util.Objects;
+
 import static cn.iocoder.dong.framework.common.exception.util.ServiceExceptionUtil.exception;
 import static cn.iocoder.dong.module.system.ErrorCodeConstants.*;
 
@@ -45,7 +47,7 @@ public class LoginPwdServiceImpl implements LoginPwdService{
             //删掉缓存中的验证码
             stringRedisTemplate.delete(RedisKeyConstants.CAPTCHA_CODE+loginPwdVO.getUuid());
             //校验验证码是否正确
-            if (!s.equals(loginPwdVO.getCode())){
+            if (!Objects.equals(s,loginPwdVO.getCode())){
                 throw exception(SMS_CODE_NOT_CORRECT);
             }
         }
@@ -55,5 +57,18 @@ public class LoginPwdServiceImpl implements LoginPwdService{
             throw exception(AUTH_LOGIN_BAD_CREDENTIALS);
         }
         return userSessionHelper.genSession(userDO);
+    }
+
+    /**
+     * 退出登录
+     *
+     * @param token
+     */
+    @Override
+    public void logout(String token) {
+        if (token!=null && !Objects.equals(token,"")){
+            //删掉token
+            stringRedisTemplate.delete(token);
+        }
     }
 }

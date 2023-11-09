@@ -28,11 +28,12 @@ public class LoginPwdController {
     @PermitAll
     public CommonResult<String> PwdLogin(@RequestBody LoginPwdVO loginPwdVO,
                                  HttpServletResponse response){
-        String s  = loginPwdService.reginter(loginPwdVO);
-        if (s!=null){
-            Cookie cookie = new Cookie("dong",s);
-            response.addCookie(cookie);
-            return success(s);
+        String token  = loginPwdService.reginter(loginPwdVO);
+        if (token != null){
+//            Cookie cookie = new Cookie("Admin-Token",token);
+//            cookie.setPath("/");
+//            response.addCookie(cookie);
+            return success(token);
         }else {
             return error(AUTH_LOGIN_FAILED_MIXED);
         }

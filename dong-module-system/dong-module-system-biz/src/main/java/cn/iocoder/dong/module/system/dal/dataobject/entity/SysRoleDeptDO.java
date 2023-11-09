@@ -1,6 +1,7 @@
 package cn.iocoder.dong.module.system.dal.dataobject.entity;
 
 import cn.iocoder.dong.framework.mybatis.core.dataobject.BaseDO;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
@@ -10,9 +11,16 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SysRoleDept extends BaseDO {
+public class SysRoleDeptDO extends BaseDO {
 
     private static final long serialVersionUID = 825220283729477927L;
+
+
+    /**
+     * id
+     */
+    @TableId
+    private Long id;
 
     /**
      * 角色ID

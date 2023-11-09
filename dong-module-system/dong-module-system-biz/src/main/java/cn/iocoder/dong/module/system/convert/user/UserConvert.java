@@ -1,5 +1,6 @@
 package cn.iocoder.dong.module.system.convert.user;
 
+import cn.iocoder.dong.module.system.api.user.dto.SysUserDTO;
 import cn.iocoder.dong.module.system.controller.user.vo.UserVO;
 import cn.iocoder.dong.module.system.dal.dataobject.entity.SysUserDO;
 import org.mapstruct.Mapper;
@@ -13,4 +14,5 @@ public interface UserConvert {
 
     SysUserDO convert(UserVO userVO);
 
+    SysUserDTO convert(SysUserDO userDO);
 }

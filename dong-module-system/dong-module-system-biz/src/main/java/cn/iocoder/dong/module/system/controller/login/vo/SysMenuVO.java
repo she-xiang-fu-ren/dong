@@ -1,23 +1,13 @@
-package cn.iocoder.dong.module.system.dal.dataobject.entity;
+package cn.iocoder.dong.module.system.controller.login.vo;
 
-import cn.iocoder.dong.framework.mybatis.core.dataobject.BaseDO;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.*;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@TableName(value = "sys_menu", autoResultMap = true) // 由于 SQL Server 的 system_user 是关键字，所以使用 system_users
 @Data
-@EqualsAndHashCode(callSuper = true)
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class SysMenuDO extends BaseDO {
-
-    private static final long serialVersionUID = -90646928807969675L;
-
+public class SysMenuVO {
     /**
      * 菜单ID
      */
@@ -94,5 +84,6 @@ public class SysMenuDO extends BaseDO {
      */
     private String remark;
 
+    /** 子菜单 */
+    private List<SysMenuVO> children = new ArrayList<>();
 }
-

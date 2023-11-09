@@ -53,7 +53,7 @@ public class WebFrameworkUtils {
      * @param request 请求
      * @param userType 用户类型
      */
-    public static void setLoginUserType(ServletRequest request, Integer userType) {
+    public static void setLoginUserType(ServletRequest request, String userType) {
         request.setAttribute(REQUEST_ATTRIBUTE_LOGIN_USER_TYPE, userType);
     }
 
