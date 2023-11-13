@@ -1,0 +1,4 @@
+cn.iocoder.dong.framework.captcha.core.service.impl.BlockPuzzleCaptchaServiceImpl
+cn.iocoder.dong.framework.captcha.core.service.impl.ClickWordCaptchaServiceImpl
+cn.iocoder.dong.framework.captcha.core.service.impl.DefaultCaptchaServiceImpl
+cn.iocoder.dong.framework.captcha.core.service.impl.RotatePuzzleCaptchaServiceImpl

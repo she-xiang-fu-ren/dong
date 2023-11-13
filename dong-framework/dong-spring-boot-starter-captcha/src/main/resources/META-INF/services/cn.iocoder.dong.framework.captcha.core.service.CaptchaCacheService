@@ -1,0 +1,2 @@
+cn.iocoder.dong.framework.captcha.core.service.impl.RedisCaptchaServiceImpl
+cn.iocoder.dong.framework.captcha.core.service.impl.CaptchaCacheServiceMemImpl

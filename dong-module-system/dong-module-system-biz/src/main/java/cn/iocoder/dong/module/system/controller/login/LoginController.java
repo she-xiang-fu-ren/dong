@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import javax.annotation.security.PermitAll;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import java.util.*;
 
@@ -84,5 +85,21 @@ public class LoginController {
             loginPwdService.logout(token);
         }
         return success(true);
+    }
+
+    @GetMapping(value = "/serial")
+    @PermitAll
+    public String checkSign(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String signature = request.getParameter("signature");
+            String timestamp = request.getParameter("timestamp");
+            String nonce = request.getParameter("nonce");
+            String echostr = request.getParameter("echostr");
+            if (SignUtil.checkSignature(signature, timestamp, nonce)) {
+                return echostr;
+            }
+        } catch (Exception e) {
+        }
+        return null;
     }
 }
